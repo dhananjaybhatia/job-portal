@@ -3,6 +3,7 @@ import { EyeIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { Button } from "./ui/button";
 
 type StartupCardType = {
   _createdAt: string;
@@ -58,6 +59,24 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
             className="rounded-full object-cover"
           />
         </Link>
+      </div>
+      <Link href={`/startup/${_id}`}>
+        <p className="startup-card_desc">{description}</p>
+        <Image
+          src={image}
+          alt="placeholder"
+          width={100}
+          height={100}
+          className="startup-card_img"
+        />
+      </Link>
+      <div className="flex justify-between items-center gap-3 mt-5">
+        <Link href={`/?query=${category.toLowerCase()}`}>
+          <p className="text-16-medium">{category}</p>
+        </Link>
+        <Button className="startup-card_btn" asChild>
+          <Link href={`/startup/${_id}`}>Details</Link>
+        </Button>
       </div>
     </li>
   );
