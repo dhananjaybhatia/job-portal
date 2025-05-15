@@ -12,15 +12,71 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
 
+@layer components {
+  .heading {
+    @apply uppercase px-6 py-3 text-3xl text-[#e0e1dd] font-extrabold sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5 mx-auto;
+  }
+  .blueContainer {
+    @apply w-full bg-[#264653] min-h-[530px] flex justify-center items-center flex-col py-10 px-6;
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.05));
+    animation: glowDots 4s ease-in-out infinite;
+  }
+  .sub-heading {
+    @apply font-medium text-[20px] text-[#cdceca] max-w-2xl text-center break-words;
+  }
+  .search-form {
+    @apply max-w-3xl w-full min-h-[80px] bg-[#E0E1DD] rounded-full text-[24px] mt-8 px-5 flex flex-row items-center gap-5;
+  }
+  .card_grid {
+    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+  }
+  .card_grid-sm {
+    @apply grid sm:grid-cols-2 gap-5;
+  }
+  .no-result {
+    @apply text-black text-sm font-medium;
+  }
+    .startup-card {
+      @apply bg-[#F7F7F5] border border-[#D6D7D5] py-6 px-5 rounded-xl shadow-sm hover:shadow-md hover:border-[#B5B5B5] transition-all duration-300;
+    }
+    .startup-card_date {
+      @apply font-medium text-[14px] text-[#264653] bg-[#E0E1DD] px-4 py-2 rounded-full group-hover:bg-white transition-colors duration-300;
+    }
+        .text-26-semibold {
+          @apply font-semibold text-[26px] text-[#0D1B2A]; }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes glowDots {
+  0%,
+  100% {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.12) 1px,
+      transparent 1px
+    );
+  }
+
+  50% {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.3) 1.2px,
+      transparent 1px
+    );
+  }
 }
