@@ -21,6 +21,8 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const parsedContent = md.render(post?.pitch || "");
 
+  
+
   return (
     <>
       <section className="blueContainer">
@@ -29,33 +31,51 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <p className="sub-heading">{post.description}</p>
       </section>
       <section className="section_container">
-        <Image
-          src={post.image!}
-          alt={post.title!}
-          width={600}
-          height={400}
-          className="w-full h-auto rounded-xl"
-        />
+        {post.image && (
+          <Image
+            src={post.image}
+            alt={post.title ?? "Startup image"}
+            width={600}
+            height={400}
+            className="w-full h-auto rounded-xl"
+          />
+        )}
+
         <div className=" space-y-5 mt-10 max-w-4xl mx-auto">
           <div className="flex justify-between items-center gap-5">
             <Link
               href={`/user/${post.author?._id}`}
               className="flex gap-2 items-center mb-3"
             >
-              <Image
-                src={post.author?.image}
-                alt="avatar"
-                width={64}
-                height={64}
-                className="rounded-full drop-shadow-lg"
-              />
+              {post.author?.image && (
+                <Image
+                  src={post.author.image}
+                  alt={post.author?.name ?? "Author avatar"}
+                  width={64}
+                  height={64}
+                  className="rounded-full drop-shadow-lg"
+                />
+              )}
+
               <div>
-                <p className="font-medium text-[20px] text-black">
-                  {post.author?.name}
-                </p>
-                <p className="font-medium text-[16px] text-gray-700">
-                  @{post.author?.username}
-                </p>
+                {post.author?.name ? (
+                  <p className="font-medium text-[20px] text-black">
+                    {post.author?.name}
+                  </p>
+                ) : (
+                  <p className="font-medium text-[20px] text-black">
+                    Anonymous
+                  </p>
+                )}
+                {post.author?.username ? (
+                  <p className="font-medium text-[16px] text-gray-700">
+                    @{post.author?.username}
+                  </p>
+                ) : (
+                  <p className="font-medium text-[16px] text-red-500">
+                    username not provided**
+                  </p>
+                )}
               </div>
             </Link>
             <p className="category-tag ">{post.category}</p>
