@@ -69,6 +69,24 @@
   .startup-card_btn {
     @apply rounded-full bg-[#415A77] font-medium text-[16px] text-white px-5 py-3;
   }
+  .tag {
+    @apply bg-[#FF5C67] text-[#E0E1DD] px-6 py-3 font-bold rounded-sm uppercase relative;
+  }
+  .section_container {
+    @apply px-6 py-10 max-w-7xl mx-auto;
+  }
+  .category-tag {
+    @apply font-medium text-[16px] bg-[#ffc8dd] px-4 py-2 rounded-full;
+  }
+  .view_skeleton {
+    @apply bg-zinc-400 h-10 w-24 rounded-lg fixed bottom-3 right-3;
+  }
+  .view-container {
+    @apply flex justify-end items-center mt-5 fixed bottom-3 right-3;
+  }
+  .view-text {
+    @apply font-bold text-[16px] bg-[#e9ecef]  px-4 py-2 rounded-lg capitalize;
+  }
 }
 
 body {

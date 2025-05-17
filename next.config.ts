@@ -8,7 +8,13 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+  }, experimental: {
+    ppr: 'incremental'
   },
+  devIndicators: {
+
+    position: "bottom-right"
+  }
 };
 
 export default nextConfig;
